@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speisekarte – Zur Linde, Winterthur</title>
+  <meta name="description" content="Die Speisekarte vom Restaurant Zur Linde in Winterthur. Gutbürgerliche Küche, saisonale Gerichte, hausgemachte Desserts.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-bg: #FAF9F6;
+      --color-surface: #FFFFFF;
+      --color-text: #2C2418;
+      --color-text-muted: #7A7262;
+      --color-accent: #5B3A29;
+      --color-accent-light: #F0EBE3;
+      --color-border: #E6E0D6;
+      --color-warm: #D4A574;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --font-display: 'Libre Baskerville', Georgia, serif;
+      --max-width: 1000px;
+      --space-xs: 0.5rem; --space-sm: 1rem; --space-md: 2rem;
+      --space-lg: 4rem; --space-xl: 6rem;
+      --radius: 10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body); background: var(--color-bg);
+      color: var(--color-text); line-height: 1.7; font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-md); }
+
+    /* Header */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250, 249, 246, 0.95);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .site-header.scrolled { box-shadow: 0 2px 24px rgba(44,36,24,0.06); }
+    .header-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 0.85rem var(--space-md);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--color-text); }
+    .logo span { color: var(--color-warm); }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a { color: var(--color-text-muted); font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--color-text); text-decoration: none; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--color-text); margin: 5px 0; border-radius: 1px; }
+
+    /* Page header */
+    .page-header {
+      padding: calc(var(--space-lg) + 70px) 0 var(--space-lg);
+      text-align: center;
+      background: var(--color-accent-light);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700; margin-bottom: 0.3rem;
+    }
+    .page-header p { color: var(--color-text-muted); font-size: 1rem; }
+
+    /* Menu */
+    .menu-section { padding: var(--space-lg) 0; max-width: 680px; margin: 0 auto; }
+    .menu-category { margin-bottom: var(--space-lg); }
+
+    .menu-category-header {
+      display: flex; align-items: center; gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+    }
+    .menu-category-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 700;
+    }
+    .menu-category-line {
+      flex: 1; height: 1px; background: var(--color-border);
+    }
+
+    .menu-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 0.8rem 0;
+      border-bottom: 1px dotted var(--color-border);
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item-info { flex: 1; margin-right: var(--space-md); }
+    .menu-item-name { font-weight: 600; font-size: 1rem; }
+    .menu-item-desc { color: var(--color-text-muted); font-size: 0.88rem; margin-top: 2px; }
+    .menu-item-price { font-weight: 700; color: var(--color-warm); white-space: nowrap; font-size: 1rem; }
+
+    .menu-note {
+      margin-top: var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-accent-light);
+      border-radius: var(--radius);
+      font-size: 0.88rem;
+      color: var(--color-accent);
+      text-align: center;
+    }
+
+    /* PDF section */
+    .pdf-section {
+      padding: var(--space-lg) 0; text-align: center;
+      border-top: 1px solid var(--color-border);
+    }
+    .pdf-title { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .pdf-text { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: var(--space-sm); }
+    .pdf-download {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem; background: var(--color-accent); color: white;
+      border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s;
+    }
+    .pdf-download:hover { transform: translateY(-1px); color: white; text-decoration: none; }
+
+    /* Footer */
+    .site-footer {
+      background: var(--color-text); color: rgba(255,255,255,0.55);
+      padding: var(--space-md) 0; text-align: center; font-size: 0.85rem;
+    }
+    .site-footer a { color: rgba(255,255,255,0.55); }
+    .site-footer a:hover { color: white; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); }
+    .footer-links { display: flex; gap: var(--space-md); }
+
+    /* Animations */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column; position: absolute;
+        top: 100%; left: 0; right: 0; background: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+        padding: var(--space-sm) var(--space-md); gap: 0.8rem;
+      }
+      .nav-toggle { display: block; }
+      .menu-section { padding: var(--space-md) var(--space-md); }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Zur <span>Linde</span></a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html#about">Über uns</a></li>
+          <li><a href="index.html#gallery">Einblicke</a></li>
+          <li><a href="speisekarte.html" class="active">Speisekarte</a></li>
+          <li><a href="index.html#hours">Öffnungszeiten</a></li>
+          <li><a href="index.html#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Navigation öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Unsere Speisekarte</h1>
+      <p>Saisonal · Regional · Frisch zubereitet</p>
+    </div>
+  </div>
+
+  <div class="menu-section">
+    <!-- VORSPEISEN -->
+    <div class="menu-category fade-in">
+      <div class="menu-category-header">
+        <h2 class="menu-category-title">Vorspeisen</h2>
+        <div class="menu-category-line"></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Bündner Gerstensuppe</div>
+          <div class="menu-item-desc">Nach Grossmutters Rezept, mit Speck und frischem Brot</div>
+        </div>
+        <div class="menu-item-price">CHF 9.50</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Gemischter Blattsalat</div>
+          <div class="menu-item-desc">Saisonale Blätter, Hausdressing, geröstete Kerne</div>
+        </div>
+        <div class="menu-item-price">CHF 8.50</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Carpaccio vom Rind</div>
+          <div class="menu-item-desc">Dünn geschnitten, Rucola, Parmesan, Kapern</div>
+        </div>
+        <div class="menu-item-price">CHF 16.50</div>
+      </div>
+    </div>
+
+    <!-- HAUPTGERICHTE -->
+    <div class="menu-category fade-in">
+      <div class="menu-category-header">
+        <h2 class="menu-category-title">Hauptgerichte</h2>
+        <div class="menu-category-line"></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Zürcher Geschnetzeltes</div>
+          <div class="menu-item-desc">Kalbfleisch, Champignons, Rösti</div>
+        </div>
+        <div class="menu-item-price">CHF 32.00</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Rindsfilet an Pfeffersauce</div>
+          <div class="menu-item-desc">200g, Saisongemüse, Kartoffelgratin</div>
+        </div>
+        <div class="menu-item-price">CHF 42.00</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Felchenfilets aus dem Bodensee</div>
+          <div class="menu-item-desc">Meunière, Mandelbutter, Salzkartoffeln</div>
+        </div>
+        <div class="menu-item-price">CHF 34.00</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Älpler Magronen</div>
+          <div class="menu-item-desc">Kartoffeln, Teigwaren, Bergkäse, Apfelmus, Röstzwiebeln</div>
+        </div>
+        <div class="menu-item-price">CHF 22.00</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Saisonales Gemüse-Curry</div>
+          <div class="menu-item-desc">Kokosmilch, Basmatireis, frische Kräuter (vegan)</div>
+        </div>
+        <div class="menu-item-price">CHF 24.00</div>
+      </div>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="menu-category fade-in">
+      <div class="menu-category-header">
+        <h2 class="menu-category-title">Desserts</h2>
+        <div class="menu-category-line"></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Vermicelles</div>
+          <div class="menu-item-desc">Hausgemacht, mit Rahm und Meringue</div>
+        </div>
+        <div class="menu-item-price">CHF 12.50</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Schoggimousse</div>
+          <div class="menu-item-desc">Dunkle Schweizer Schokolade, Schlagrahm</div>
+        </div>
+        <div class="menu-item-price">CHF 10.50</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Crème brûlée</div>
+          <div class="menu-item-desc">Klassisch, mit Vanille aus Madagaskar</div>
+        </div>
+        <div class="menu-item-price">CHF 11.00</div>
+      </div>
+    </div>
+
+    <!-- GETRÄNKE -->
+    <div class="menu-category fade-in">
+      <div class="menu-category-header">
+        <h2 class="menu-category-title">Getränke</h2>
+        <div class="menu-category-line"></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Offener Wein (1 dl)</div>
+          <div class="menu-item-desc">Weiss oder Rot – frag nach der aktuellen Auswahl</div>
+        </div>
+        <div class="menu-item-price">ab CHF 5.50</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Bier vom Fass (3 dl)</div>
+          <div class="menu-item-desc">Schützengarten Lager</div>
+        </div>
+        <div class="menu-item-price">CHF 5.80</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Mineralwasser</div>
+          <div class="menu-item-desc">Henniez, still oder prickelnd, 5 dl</div>
+        </div>
+        <div class="menu-item-price">CHF 4.50</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-name">Kaffee / Espresso</div>
+          <div class="menu-item-desc">Hausröstung von der Kaffeemacher GmbH</div>
+        </div>
+        <div class="menu-item-price">CHF 4.50</div>
+      </div>
+    </div>
+
+    <div class="menu-note fade-in">
+      Allergien oder spezielle Wünsche? Sag uns einfach Bescheid – wir passen gerne an.<br>
+      Alle Preise in CHF, inkl. MwSt. Preisänderungen vorbehalten.
+    </div>
+  </div>
+
+  <!-- PDF Download -->
+  <section class="pdf-section">
+    <div class="container fade-in">
+      <h2 class="pdf-title">Speisekarte zum Mitnehmen</h2>
+      <p class="pdf-text">Die aktuelle Karte als PDF zum Herunterladen.</p>
+      <a href="#" class="pdf-download">Speisekarte herunterladen (PDF)</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+        <p>&copy; 2026 Zur Linde · Winterthur</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10));
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
