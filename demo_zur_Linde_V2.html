@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zur Linde – Gutbürgerliche Küche in Winterthur</title>
+  <meta name="description" content="Restaurant Zur Linde in Winterthur – Gutbürgerliche Küche, saisonale Gerichte und hausgemachte Desserts. Familiär, ehrlich, seit 2019.">
+  <meta property="og:title" content="Zur Linde – Gutbürgerliche Küche in Winterthur">
+  <meta property="og:description" content="Gutbürgerliche Küche, saisonale Gerichte und hausgemachte Desserts. Familiär, ehrlich, seit 2019.">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Zur Linde",
+    "description": "Gutbürgerliche Küche, saisonale Gerichte und hausgemachte Desserts in Winterthur.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Steinberggasse 42",
+      "addressLocality": "Winterthur",
+      "postalCode": "8400",
+      "addressCountry": "CH"
+    },
+    "telephone": "+41 52 234 56 78",
+    "email": "hoi@zurlinde-winterthur.ch",
+    "url": "https://zurlinde-winterthur.ch",
+    "servesCuisine": "Gutbürgerlich, Schweizer Küche",
+    "menu": "https://zurlinde-winterthur.ch/speisekarte.html",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "11:30",
+        "closes": "14:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "17:30",
+        "closes": "22:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "11:30",
+        "closes": "22:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "11:30",
+        "closes": "16:00"
+      }
+    ],
+    "priceRange": "$$"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-bg: #FAF9F6;
+      --color-surface: #FFFFFF;
+      --color-text: #2C2418;
+      --color-text-muted: #7A7262;
+      --color-accent: #5B3A29;
+      --color-accent-light: #F0EBE3;
+      --color-accent-hover: #4A2E20;
+      --color-border: #E6E0D6;
+      --color-hero-overlay: rgba(30, 20, 10, 0.55);
+      --color-warm: #D4A574;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --font-display: 'Libre Baskerville', Georgia, serif;
+      --max-width: 1000px;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 4rem;
+      --space-xl: 6rem;
+      --radius: 10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-md); }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250, 249, 246, 0.95);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border);
+      transition: box-shadow 0.3s;
+    }
+    .site-header.scrolled { box-shadow: 0 2px 24px rgba(44,36,24,0.06); }
+
+    .header-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 0.85rem var(--space-md);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--color-text);
+      letter-spacing: -0.01em;
+    }
+    .logo span { color: var(--color-warm); }
+
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      color: var(--color-text-muted); font-size: 0.88rem;
+      font-weight: 500; transition: color 0.2s; letter-spacing: 0.01em;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--color-text); text-decoration: none; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--color-text); margin: 5px 0; transition: 0.3s; border-radius: 1px; }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative; overflow: hidden;
+      height: 85vh; min-height: 500px; max-height: 750px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; color: white;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400&q=80') center/cover no-repeat;
+    }
+
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: var(--color-hero-overlay);
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 620px; padding: 0 var(--space-md); }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.2em;
+      color: var(--color-warm);
+      margin-bottom: var(--space-sm);
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700; line-height: 1.2;
+      margin-bottom: var(--space-sm);
+    }
+
+    .hero p {
+      font-size: 1.05rem; line-height: 1.7;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: var(--space-md);
+    }
+
+    .hero-ctas { display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2rem; border-radius: 6px;
+      font-weight: 600; font-size: 0.92rem;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      cursor: pointer; border: none;
+    }
+    .btn:hover { transform: translateY(-1px); text-decoration: none; }
+
+    .btn-primary { background: var(--color-warm); color: white; }
+    .btn-primary:hover { box-shadow: 0 6px 20px rgba(212,165,116,0.4); color: white; }
+
+    .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.35); color: white; }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: white; }
+
+    /* ===== SECTIONS ===== */
+    .section { padding: var(--space-xl) 0; }
+
+    .section-label {
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--color-warm); margin-bottom: var(--space-xs);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700; line-height: 1.3;
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-text {
+      color: var(--color-text-muted);
+      max-width: 560px; font-size: 1rem; line-height: 1.75;
+    }
+
+    .divider {
+      width: 40px; height: 3px;
+      background: var(--color-warm);
+      border-radius: 2px;
+      margin: var(--space-xs) 0 var(--space-md);
+    }
+
+    /* ===== ABOUT ===== */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg); align-items: center;
+    }
+
+    .about-image {
+      border-radius: var(--radius); overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+
+    .about-image img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius); overflow: hidden;
+      aspect-ratio: 1; cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover { transform: scale(1.015); }
+
+    .gallery-item:first-child {
+      grid-column: span 2; grid-row: span 2;
+      aspect-ratio: auto;
+    }
+
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* ===== HOURS ===== */
+    .hours-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg); align-items: start;
+    }
+
+    .hours-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: var(--space-md);
+    }
+
+    .hours-row {
+      display: flex; justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.95rem;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { font-weight: 500; }
+    .hours-time { color: var(--color-text-muted); }
+    .hours-closed { color: var(--color-text-muted); font-style: italic; }
+
+    .hours-note {
+      margin-top: var(--space-sm);
+      padding: 0.75rem var(--space-sm);
+      background: var(--color-accent-light);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--color-accent);
+      font-weight: 500;
+    }
+
+    .hours-image {
+      border-radius: var(--radius); overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+    .hours-image img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ===== CONTACT ===== */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+
+    .contact-item { margin-bottom: 1.5rem; }
+    .contact-label {
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--color-text-muted); margin-bottom: 0.25rem;
+    }
+    .contact-value { font-size: 1.05rem; font-weight: 500; }
+    .contact-value a { color: var(--color-text); transition: color 0.2s; }
+    .contact-value a:hover { color: var(--color-accent); }
+
+    /* Contact Form */
+    .contact-form { margin-top: var(--space-sm); }
+    .form-group { margin-bottom: var(--space-sm); }
+    .form-label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .form-input, .form-textarea {
+      width: 100%; padding: 0.7rem 0.9rem;
+      border: 1px solid var(--color-border); border-radius: 6px;
+      font-family: var(--font-body); font-size: 0.95rem;
+      background: var(--color-surface); color: var(--color-text);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus {
+      outline: none; border-color: var(--color-warm);
+      box-shadow: 0 0 0 3px rgba(212,165,116,0.15);
+    }
+    .form-textarea { resize: vertical; min-height: 110px; }
+
+    .form-submit {
+      background: var(--color-accent); color: white; border: none;
+      padding: 0.8rem 2rem; border-radius: 6px;
+      font-family: var(--font-body); font-weight: 600; font-size: 0.92rem;
+      cursor: pointer; transition: background 0.2s, transform 0.2s;
+    }
+    .form-submit:hover { background: var(--color-accent-hover); transform: translateY(-1px); }
+
+    /* Map */
+    .map-embed {
+      border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--color-border);
+      aspect-ratio: 1;
+    }
+    .map-embed iframe { width: 100%; height: 100%; border: none; }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: var(--color-text); color: rgba(255,255,255,0.55);
+      padding: var(--space-md) 0; text-align: center; font-size: 0.85rem;
+    }
+    .site-footer a { color: rgba(255,255,255,0.55); }
+    .site-footer a:hover { color: white; }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: var(--space-sm);
+    }
+    .footer-links { display: flex; gap: var(--space-md); }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in:nth-child(2) { transition-delay: 0.1s; }
+    .fade-in:nth-child(3) { transition-delay: 0.2s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+        padding: var(--space-sm) var(--space-md); gap: 0.8rem;
+      }
+      .nav-toggle { display: block; }
+      .about-grid, .contact-grid, .hours-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+      .about-image { order: -1; aspect-ratio: 16/10; }
+      .hours-image { display: none; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+      .gallery-item:first-child { grid-column: span 2; grid-row: span 1; aspect-ratio: 16/9; }
+      .hero { height: 70vh; min-height: 420px; }
+      .section { padding: var(--space-lg) 0; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">Zur <span>Linde</span></a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">Über uns</a></li>
+          <li><a href="#gallery">Einblicke</a></li>
+          <li><a href="speisekarte.html">Speisekarte</a></li>
+          <li><a href="#hours">Öffnungszeiten</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Navigation öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" role="img" aria-label="Gemütliches Restaurant-Interieur"></div>
+    <div class="hero-content">
+      <div class="hero-label">Winterthur · Seit 2019</div>
+      <h1>Gutbürgerlich.<br>Ehrlich. Gemütlich.</h1>
+      <p>Saisonale Küche mit regionalen Zutaten, hausgemachte Desserts und eine Atmosphäre, in der man sich zuhause fühlt.</p>
+      <div class="hero-ctas">
+        <a href="speisekarte.html" class="btn btn-primary">Speisekarte ansehen</a>
+        <a href="#contact" class="btn btn-outline">Tisch reservieren</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="fade-in">
+          <span class="section-label">Über uns</span>
+          <h2 class="section-title">Kochen mit Herz,<br>servieren mit Freude.</h2>
+          <div class="divider"></div>
+          <p class="section-text">
+            Zur Linde ist eine kleine Quartierbeiz mitten in Winterthur. Hier gibt es keine Speisekarte mit 80 Positionen – dafür eine Handvoll Gerichte, die wir jeden Tag frisch und mit besten Zutaten zubereiten.
+          </p>
+          <p class="section-text" style="margin-top: 1rem;">
+            Wir arbeiten mit Produzenten aus der Region, kochen nach Saison und nehmen uns Zeit für das, was zählt: ehrliches Essen und echte Gastfreundschaft. Ob Zmittag mit den Kollegen, Feierabend-Bier oder Sonntagsbrunch mit der Familie – bei uns bist du willkommen.
+          </p>
+        </div>
+        <div class="about-image fade-in">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" 
+               alt="Sorgfältig angerichtetes Gericht auf einem Teller" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery" style="background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+    <div class="container">
+      <div class="fade-in">
+        <span class="section-label">Einblicke</span>
+        <h2 class="section-title">Atmosphäre zum Wohlfühlen</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="gallery-grid fade-in">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&q=80" alt="Restaurant Innenraum" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80" alt="Frisch zubereitetes Gericht" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=80" alt="Bar und Theke" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=400&q=80" alt="Dessert" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&q=80" alt="Wein und Gläser" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÖFFNUNGSZEITEN -->
+  <section class="section" id="hours">
+    <div class="container">
+      <div class="hours-grid">
+        <div>
+          <div class="fade-in">
+            <span class="section-label">Öffnungszeiten</span>
+            <h2 class="section-title">Wann wir für dich da sind</h2>
+            <div class="divider"></div>
+          </div>
+          <div class="hours-card fade-in">
+            <div class="hours-row">
+              <span class="hours-day">Montag</span>
+              <span class="hours-closed">Ruhetag</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Dienstag – Freitag</span>
+              <span class="hours-time">11:30 – 14:00 / 17:30 – 22:00</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Samstag</span>
+              <span class="hours-time">11:30 – 22:00 (durchgehend)</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Sonntag</span>
+              <span class="hours-time">11:30 – 16:00 (Brunch & Zmittag)</span>
+            </div>
+            <div class="hours-note">
+              Küche schliesst jeweils 30 Minuten vor Betriebsschluss. Reservierungen empfohlen am Wochenende.
+            </div>
+          </div>
+        </div>
+        <div class="hours-image fade-in">
+          <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=500&q=80" alt="Gedeckter Tisch im Restaurant" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="section" id="contact" style="background: var(--color-surface); border-top: 1px solid var(--color-border);">
+    <div class="container">
+      <div class="fade-in">
+        <span class="section-label">Kontakt & Anfahrt</span>
+        <h2 class="section-title">Wir freuen uns auf dich</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="fade-in">
+          <div class="contact-item">
+            <div class="contact-label">Adresse</div>
+            <div class="contact-value">Steinberggasse 42, 8400 Winterthur</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Telefon</div>
+            <div class="contact-value"><a href="tel:+41522345678">052 234 56 78</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">E-Mail</div>
+            <div class="contact-value"><a href="mailto:hoi@zurlinde-winterthur.ch">hoi@zurlinde-winterthur.ch</a></div>
+          </div>
+
+          <form class="contact-form" action="https://formspree.io/f/DEINE_ID" method="POST">
+            <div class="form-group">
+              <label class="form-label" for="name">Name</label>
+              <input class="form-input" type="text" id="name" name="name" required placeholder="Dein Name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">E-Mail</label>
+              <input class="form-input" type="email" id="email" name="email" required placeholder="deine@email.ch">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Nachricht</label>
+              <textarea class="form-textarea" id="message" name="message" required placeholder="z.B. Reservation für Samstagabend, 4 Personen..."></textarea>
+            </div>
+            <button class="form-submit" type="submit">Nachricht senden</button>
+          </form>
+        </div>
+
+        <div class="fade-in">
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2698.5!2d8.7275!3d47.4985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479a998ff3c14f5d%3A0x1!2zNDfCsDI5JzU0LjYiTiA4wrA0Myc0MC45IkU!5e0!3m2!1sde!2sch!4v1"
+              allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Standort Zur Linde auf Google Maps">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+        <p>&copy; 2026 Zur Linde · Winterthur</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10));
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
